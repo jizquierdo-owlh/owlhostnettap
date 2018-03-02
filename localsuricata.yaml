@@ -1,0 +1,19 @@
+# owlmaster
+# Version 0.0
+# Ansible Playbook - get pcap files from servers
+
+- hosts: localhost
+
+  vars:
+    pcaps_path: "/var/owlh/traffic/"
+    managed_pcap: "/var/owlh/managed_traffic/"
+
+  tasks:
+    - name: Recursively find /tmp files older than 2 days
+      find:
+        paths: "{{ pcaps_path }}"
+      register: pcap_files
+
+    - include_tasks: managesuricata.yaml pcap_file={{ item.path }}
+      with_items:
+        - "{{ pcap_files.files }}"

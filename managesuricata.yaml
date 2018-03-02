@@ -1,0 +1,14 @@
+# owlmaster
+# Version 0.0
+# Ansible tasks file - get file and delete file
+
+---
+
+- name: read pcap with suricata
+  command: sudo /usr/local/suricata-4.0.4/bin/suricata -c /usr/local/etc/suricata/^Cricata.yaml -r {{ pcap_file }} -k none
+  become: true
+  become_user: owl
+  become_method: su
+
+- name: mv file to managed queue
+  command: mv {{ pcap_file }} {{ managed_pcap }}

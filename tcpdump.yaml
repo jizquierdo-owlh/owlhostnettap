@@ -1,0 +1,13 @@
+# owlmaster
+# Version 0.0
+# Ansible Playbook - run tcpdump on destination
+
+- hosts: srvs
+  tasks:
+    - name: start tcpdump
+      shell: "(sudo tcpdump -i {{ ansible_default_ipv4.interface }} -G 3 -w /var/owlh/traffic/$(hostname)-%y%m%d%H%M%S.pcap -F myfilter &)"
+      async: 10
+      poll: 0
+      become: true
+      become_user: owl
+      become_method: su
