@@ -1,4 +1,3 @@
-https://www.openinfosecfoundation.org/download/suricata-4.0.4.tar.gz
 
 sudo yum -y install gcc autoconf
 sudo yum -y --enablerepo=epel install pcre-devel libyaml-devel        \
@@ -6,10 +5,13 @@ sudo yum -y --enablerepo=epel install pcre-devel libyaml-devel        \
          libnfnetlink-devel libnet-devel libcap-ng-devel jansson-devel  \
          nss-devel GeoIP GeoIP-devel
 cd ~
+
+# https://www.openinfosecfoundation.org/download/suricata-4.0.4.tar.gz
 wget https://www.openinfosecfoundation.org/download/suricata-4.0.4.tar.gz
 tar xzf suricata-4.0.4.tar.gz
+
 cd suricata-4.0.4/
-./configure --prefix=/usr/local/suricata-4.0.4   \
+./configure --prefix=/usr/local/suricata-4.0.4     \
               --sysconfdir=/usr/local/etc          \
               --localstatedir=/var                 \
               --enable-nfqueue                     \
@@ -20,6 +22,6 @@ cd suricata-4.0.4/
 make
 sudo make install-full
 
-sudo /usr/local/suricata-4.0.4/bin/suricata      \
-     -c /usr/local/etc/suricata/suricata.yaml    \
-     -i eth0
+#sudo /usr/local/suricata-4.0.4/bin/suricata      \
+#     -c /usr/local/etc/suricata/suricata.yaml    \
+#     -i eth0
