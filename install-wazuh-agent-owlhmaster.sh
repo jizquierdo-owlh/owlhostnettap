@@ -17,5 +17,5 @@ sudo yum -y install wazuh-agent
 # Modify ossec.conf - localfile suricata json log
 <localfile>
   <log_format>syslog</log_format>
-  <location>/var/ossec/logs/active-responses.log</location>
+  <location>/var/log/suricata/eve.json</location>
 </localfile>
