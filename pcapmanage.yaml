@@ -4,16 +4,11 @@
 
 - hosts: srvs
 
-  vars:
-    pcaps_path: "/var/owlh/traffic/"
-    localpcaps_path: "/home/ec2-user/traffic/"
-    period: "3"
-
   tasks:
-    - name: Recursively find /tmp files older than 2 days
+    - name: Recursively find /tmp files older than age period seconds
       find:
         paths: "{{ pcaps_path }}"
-        age: "{{period}}"
+        age: "{{ period }}"
       register: pcap_files
 
     - include_tasks: getanddelete.yaml pcap_file={{ item.path }}

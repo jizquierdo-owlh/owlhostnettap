@@ -1,5 +1,9 @@
 ---
-
 ansible_ssh_private_key_file: /home/ec2-user/.ssh/owl
+ansible_ssh_user: owl
+
 period: 60
 filterpath: /var/owlh/etc/bpf.filter
+pcaps_path: /var/owlh/traffic/
+managed_pcap: /var/owlh/managed_traffic/
+localpcaps_path: "/home/ec2-user/traffic/"filterpath: /var/owlh/etc/bpf.filter

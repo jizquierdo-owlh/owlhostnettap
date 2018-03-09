@@ -1,0 +1,16 @@
+# owlmaster
+# Version 0.0
+# Ansible tasks file - get file and delete file
+
+---
+
+- name: get file
+  fetch:
+    src: "{{ pcap_file }}"
+    dest: "{{ localpcaps_path }}"
+    flat: yes
+
+- name: delete file
+  file:
+    path: "{{ pcap_file }}"
+    state: absent
