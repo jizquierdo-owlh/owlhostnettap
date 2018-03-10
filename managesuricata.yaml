@@ -5,7 +5,7 @@
 ---
 
 - name: read pcap with suricata
-  command: sudo /usr/local/suricata-4.0.4/bin/suricata -c /usr/local/etc/suricata/^Cricata.yaml -r {{ pcap_file }} -k none
+  command: sudo {{ suricata_binary }} -c {{ suricata_config }} -r {{ pcap_file }} -k none
   become: true
   become_user: owl
   become_method: su

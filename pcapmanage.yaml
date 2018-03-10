@@ -5,7 +5,7 @@
 - hosts: srvs
 
   tasks:
-    - name: Recursively find /tmp files older than age period seconds
+    - name: get pcap files from servers folder, older than age (period) in seconds
       find:
         paths: "{{ pcaps_path }}"
         age: "{{ period }}"

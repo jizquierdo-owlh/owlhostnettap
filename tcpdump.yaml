@@ -1,11 +1,12 @@
 # owlmaster
 # Version 0.0
 # Ansible Playbook - run tcpdump on destination
+# use -Z owl with tcpdump command if you need to specify owl user.
 
 - hosts: srvs
   tasks:
     - name: start tcpdump
-      shell: "(sudo tcpdump -i {{ ansible_default_ipv4.interface }} -G {{ period }} -w /var/owlh/traffic/$(hostname)-%y%m%d%H%M%S.pcap -F {{ filterpath }} &)"
+      shell: "(sudo tcpdump -i {{ ansible_default_ipv4.interface }} -G {{ period }} -w {{ pcaps_path }}$(hostname)-%y%m%d%H%M%S.pcap -F {{ filterpath }} &)"
       async: 10
       poll: 0
       become: true

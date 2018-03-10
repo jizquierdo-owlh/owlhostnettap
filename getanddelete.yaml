@@ -4,13 +4,13 @@
 
 ---
 
-- name: get file
+- name: get remote PCAP file
   fetch:
     src: "{{ pcap_file }}"
     dest: "{{ localpcaps_path }}"
     flat: yes
 
-- name: delete file
+- name: delete remote PCAP file
   file:
     path: "{{ pcap_file }}"
     state: absent
