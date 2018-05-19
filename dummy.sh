@@ -1,4 +1,6 @@
-sudo yum install tcpreplay
+if ! yum list installed tcpreplay ; then 
+	sudo yum install tcpreplay
+fi
 sudo echo 'dummy' > /etc/modules-load.d/dummy.conf
 sudo echo 'install dummy /sbin/modprobe --ignore-install dummy; /sbin/ip link set name owlh dev dummy0 ' > /etc/modprobe.d/dummy.conf
 
@@ -12,3 +14,8 @@ ONBOOT=yes
 TYPE=Ethernet
 NM_CONTROLLED=no
 " > /etc/sysconfig/network-scripts/ifcfg-dummy
+
+echo "=========================================================="
+echo "please. restart your server to enable OwlH dummy interface" 
+echo "=========================================================="
+
