@@ -10,4 +10,4 @@ DEVICE=owlh
 ONBOOT=yes
 TYPE=Ethernet
 NM_CONTROLLED=no
-" > /etc/sysconfig/network-scripts/ifcfg-ethdummy1
+" > /etc/sysconfig/network-scripts/ifcfg-dummy
