@@ -15,7 +15,6 @@ TYPE=Ethernet
 NM_CONTROLLED=no
 " > /etc/sysconfig/network-scripts/ifcfg-dummy
 
-echo "=========================================================="
-echo "please. restart your server to enable OwlH dummy interface" 
-echo "=========================================================="
-
+sudo /sbin/modprobe --ignore-install dummy
+sudo /sbin/ip link set name owlh dev dummy0
+sudo ifup owlh
