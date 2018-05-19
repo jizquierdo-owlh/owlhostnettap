@@ -1,5 +1,5 @@
-sudo echo 'dummy' >> /etc/modules-load.d/dummy.conf
-sudo echo 'install dummy /sbin/modprobe --ignore-install dummy; /sbin/ip link set name owlh dev dummy0 ' >> /etc/modprobe.d/dummy.conf
+sudo echo 'dummy' > /etc/modules-load.d/dummy.conf
+sudo echo 'install dummy /sbin/modprobe --ignore-install dummy; /sbin/ip link set name owlh dev dummy0 ' > /etc/modprobe.d/dummy.conf
 
 sudo echo "
 NAME=owlh
