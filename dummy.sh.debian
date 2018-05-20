@@ -1,0 +1,12 @@
+echo "dummy" > /etc/modules-load.d/dummy.conf
+sudo echo "
+
+# OwlH dummy config
+auto owlh
+iface owlh inet manual
+    pre-up /sbin/ip link add owlh type dummy
+" >> /etc/network/interfaces
+
+sudo modprobe dummy
+sudo /sbin/ip link add owlh type dummy
+sudo /sbin/ifconfig owlh up
