@@ -1,4 +1,5 @@
 if ! yum list installed tcpreplay ; then 
+	sudo yum --enablerepo=extras install epel-release
 	sudo yum install tcpreplay
 fi
 
