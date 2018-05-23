@@ -1,5 +1,9 @@
 #!/bin/bash
-# 28.02.18 tested in amazon Linux instance - @owlmaster
+# Created 28.02.18
+# v0.1 24.05.18 master@owlh.net
+
+# tested in amazon Linux instance
+# tested GCLOUD - centos7 - CIS version
 
 # NOTE -- run this script in a server using
 # sudo bash owluser-setup.sh
