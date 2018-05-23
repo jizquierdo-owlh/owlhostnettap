@@ -6,29 +6,29 @@
 
 
 sudo adduser owlh
-echo "create owlh user ssh folder"
-sudo -u owlh mkdir /home/owlh/.ssh
-echo "setting ssh folder permissions"
-sudo -u owlh chmod 700 /home/owlh/.ssh
-echo "create authorized keys file"
-sudo -u owlh touch /home/owlh/.ssh/authorized_keys
-echo "setting authorized keys permissions"
-sudo -u owlh chmod 600 /home/owlh/.ssh/authorized_keys
-echo "include owlmaster key"
+#echo "create owlh user ssh folder"
+#sudo -u owlh mkdir /home/owlh/.ssh
+#echo "setting ssh folder permissions"
+#sudo -u owlh chmod 700 /home/owlh/.ssh
+#echo "create authorized keys file"
+#sudo -u owlh touch /home/owlh/.ssh/authorized_keys
+#echo "setting authorized keys permissions"
+#sudo -u owlh chmod 600 /home/owlh/.ssh/authorized_keys
+#echo "include owlmaster key"
 echo "be sure you have your owlh master pub key in /tmp/owlhmaster.pub file"
 sudo cat /tmp/owlhmaster.pub >> /home/owlh/.ssh/authorized_keys
 
 echo "install tcpdump"
-sudo yum -y install tcpdump
+if ! sudo yum list installed tcpdump ; then
+    sudo yum -y install tcpdump
+fi
+
 
 # Allow owlh use tcpdump with sudo without password
-echo "allow user owlh to use tcpdump"
+echo "allow user owlh to use tcpdump and chown"
 #sudo sed -i '/^%wheel/a owlh     ALL=(ALL)       NOPASSWD: /usr/sbin/tcpdump' /etc/sudoers
 sudo echo "owlh     ALL=(ALL)       NOPASSWD: /usr/sbin/tcpdump" >> /etc/sudoers.d/owlh
 
-
-# JUST IN CASE -
-# sudo -u owlh sudo tcpdump -i eth0
 
 # Prepare owlh related stuff folder
 echo "prepare owlh stuff folders /etc, /var/log, /usr/share"
