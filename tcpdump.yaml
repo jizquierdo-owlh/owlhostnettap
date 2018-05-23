@@ -1,7 +1,7 @@
 # owlmaster
 # Version 0.0
 # Ansible Playbook - run tcpdump on destination
-# use -Z owl with tcpdump command if you need to specify owl user.
+# use -Z owlh with tcpdump command if you need to specify owlh user.
 
 - hosts: srvs
   tasks:

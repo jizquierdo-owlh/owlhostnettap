@@ -27,18 +27,18 @@ sudo yum install ansible
 sudo mkdir /etc/ansible/playbooks
 
 # Create ssh keys
-ssh-keygen -q -t rsa -C "owlmaster@owlh.net" -f .ssh/owl -N ""
+ssh-keygen -q -t rsa -C "owlmaster@owlh.net" -f .ssh/owlh -N ""
 
 # run ansible command ping
 # use always --private-key option to avoid cache issues
-sudo ansible srvs -m ping -u owl --private-key .ssh/owl
+sudo ansible srvs -m ping -u owlh --private-key .ssh/owl
 
 # run tcpdump using ansible and user owl
-sudo ansible srvs -a 'sudo tcpdump -i eth0 -n not port 22' -u owl --private-key .ssh/owl
+sudo ansible srvs -a 'sudo tcpdump -i eth0 -n not port 22' -u owlh --private-key .ssh/owl
 
 
 # run tcpdump from playbook
-sudo ansible-playbook /etc/ansible/playbooks/tcpdump.yaml --limit 'srvs' -u owl --private-key /home/ec2-user/.ssh/owl
+sudo ansible-playbook /etc/ansible/playbooks/tcpdump.yaml --limit 'srvs' -u owlh --private-key /home/ec2-user/.ssh/owl
 
 
 # stop tcpdump

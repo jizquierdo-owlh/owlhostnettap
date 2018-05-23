@@ -5,35 +5,44 @@
 # sudo bash owluser-setup.sh
 
 
-sudo adduser owl
-echo "create owl user ssh folder"
-sudo -u owl mkdir /home/owl/.ssh
+sudo adduser owlh
+echo "create owlh user ssh folder"
+sudo -u owlh mkdir /home/owlh/.ssh
 echo "setting ssh folder permissions"
-sudo -u owl chmod 700 /home/owl/.ssh
+sudo -u owlh chmod 700 /home/owlh/.ssh
 echo "create authorized keys file"
-sudo -u owl touch /home/owl/.ssh/authorized_keys
+sudo -u owlh touch /home/owlh/.ssh/authorized_keys
 echo "setting authorized keys permissions"
-sudo -u owl chmod 600 /home/owl/.ssh/authorized_keys
+sudo -u owlh chmod 600 /home/owlh/.ssh/authorized_keys
 echo "include owlmaster key"
-sudo -u owl echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDUcJhz9gpE2a1gra67eF/0jjsTBtNHRMawZGLDjQM5mXkmcfy4BTrykvuby0eEEO9hhSRMA5so9cAsmAkQKpW0dxRx0Y5c8LKwrtkzmOHrltQrFTeLmaJaojXDIjVch6XNTwOSnOO9b9O5KKjsJe86I55YP+4sf3ux7azEYVEUWzoN5aqELe+Z4+/A93F142QlJLuCra3Jp5GgeZoBBU7H2bKnSOXOmEQHUjiPETDUDTb1xyb3lVdYALAW3P424KvfmoTK+i3S8hy9vMHcgHQUkyH8ijfKbHZ0V0PTC5WEqVp6bGSGmd2qzyUbapeCnzrtWjiGEhFIL+jZoIg3xXH/ owlmaster@owlh.net" >> /home/owl/.ssh/authorized_keys
+echo "be sure you have your owlh master pub key in /tmp/owlhmaster.pub file"
+sudo cat /tmp/owlhmaster.pub >> /home/owlh/.ssh/authorized_keys
 
 echo "install tcpdump"
 sudo yum -y install tcpdump
 
-# Allow owl use tcpdump with sudo without password
-echo "allow user owl to use tcpdump"
-sudo sed -i '/^root/a owl     ALL=(ALL)       NOPASSWD: /usr/sbin/tcpdump' /etc/sudoers
+# Allow owlh use tcpdump with sudo without password
+echo "allow user owlh to use tcpdump"
+#sudo sed -i '/^%wheel/a owlh     ALL=(ALL)       NOPASSWD: /usr/sbin/tcpdump' /etc/sudoers
+sudo echo "owlh     ALL=(ALL)       NOPASSWD: /usr/sbin/tcpdump" >> /etc/sudoers.d/owlh
+
 
 # JUST IN CASE -
-# sudo -u owl sudo tcpdump -i eth0
+# sudo -u owlh sudo tcpdump -i eth0
 
 # Prepare owlh related stuff folder
-echo "prepare owlh stuff folder /var/owlh"
-sudo mkdir /var/owlh
-sudo chown owl /var/owlh
-sudo -u owl mkdir /var/owlh/traffic
-sudo -u owl mkdir /var/owlh/etc
-sudo -u owl mkdir /var/owlh/bin
+echo "prepare owlh stuff folders /etc, /var/log, /usr/share"
+sudo mkdir /etc/owlh
+sudo mkdir /var/log/owlh
+sudo mkdir /usr/share/owlh
+sudo mkdir /usr/share/owlh/pcap
+
+sudo chown owlh /etc/owlh
+sudo chgrp owlh /etc/owlh
+sudo chown owlh /var/log/owlh
+sudo chgrp owlh /var/log/owlh
+sudo chown -R owlh /usr/share/owlh
+sudo chgrp -R owlh /usr/share/owlh
 
 # clean and end
 echo "should be done. Enjoy your day."
