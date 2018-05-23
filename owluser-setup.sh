@@ -10,15 +10,15 @@
 
 
 sudo adduser owlh
-#echo "create owlh user ssh folder"
-#sudo -u owlh mkdir /home/owlh/.ssh
-#echo "setting ssh folder permissions"
-#sudo -u owlh chmod 700 /home/owlh/.ssh
-#echo "create authorized keys file"
-#sudo -u owlh touch /home/owlh/.ssh/authorized_keys
-#echo "setting authorized keys permissions"
-#sudo -u owlh chmod 600 /home/owlh/.ssh/authorized_keys
-#echo "include owlmaster key"
+echo "create owlh user ssh folder"
+sudo -u owlh mkdir /home/owlh/.ssh
+echo "setting ssh folder permissions"
+sudo -u owlh chmod 700 /home/owlh/.ssh
+echo "create authorized keys file"
+sudo -u owlh touch /home/owlh/.ssh/authorized_keys
+echo "setting authorized keys permissions"
+sudo -u owlh chmod 600 /home/owlh/.ssh/authorized_keys
+echo "include owlmaster key"
 echo "be sure you have your owlh master pub key in /tmp/owlhmaster.pub file"
 sudo cat /tmp/owlhmaster.pub >> /home/owlh/.ssh/authorized_keys
 
