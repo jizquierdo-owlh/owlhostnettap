@@ -22,3 +22,5 @@ NM_CONTROLLED=no
 sudo /sbin/modprobe --ignore-install dummy
 sudo /sbin/ip link set name owlh dev dummy0
 sudo ifup owlh
+sudo echo "NOZEROCONF=yes" >> /etc/sysconfig/network
+
