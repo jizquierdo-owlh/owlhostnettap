@@ -2,7 +2,7 @@ if ! yum list installed tcpreplay ; then
 	if ! yum list installed epel-release ; then 
 		sudo yum --enablerepo=extras install epel-release
 	fi
-	sudo yum install tcpreplay
+	sudo yum -y install tcpreplay
 fi
 
 sudo echo 'dummy' > /etc/modules-load.d/dummy.conf
