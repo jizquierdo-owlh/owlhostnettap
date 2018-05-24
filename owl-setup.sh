@@ -21,6 +21,8 @@ sudo -u owlh chmod 600 /home/owlh/.ssh/authorized_keys
 echo "include owlmaster key"
 echo "be sure you have your owlh master pub key in /tmp/owlhmaster.pub file"
 sudo cat /tmp/owlhmaster.pub >> /home/owlh/.ssh/authorized_keys
+echo "Allow owlh user to login with ssh"
+sudo sed -i '/^AllowUsers/s/$/ owlh/' /etc/ssh/sshd_config
 
 echo "install tcpdump"
 if ! sudo yum list installed tcpdump ; then
@@ -32,7 +34,6 @@ fi
 echo "allow user owlh to use tcpdump and chown"
 #sudo sed -i '/^%wheel/a owlh     ALL=(ALL)       NOPASSWD: /usr/sbin/tcpdump' /etc/sudoers
 sudo echo "owlh     ALL=(ALL)       NOPASSWD: /usr/sbin/tcpdump, /usr/bin/chown" >> /etc/sudoers.d/owlh
-
 
 # Prepare owlh related stuff folder
 echo "prepare owlh stuff folders /etc, /var/log, /usr/share"
