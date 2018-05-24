@@ -23,6 +23,7 @@ echo "be sure you have your owlh master pub key in /tmp/owlhmaster.pub file"
 sudo cat /tmp/owlhmaster.pub >> /home/owlh/.ssh/authorized_keys
 echo "Allow owlh user to login with ssh"
 sudo sed -i '/^AllowUsers/s/$/ owlh/' /etc/ssh/sshd_config
+sudo systemctl restart sshd
 
 echo "install tcpdump"
 if ! sudo yum list installed tcpdump ; then
