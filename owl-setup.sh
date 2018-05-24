@@ -31,7 +31,7 @@ fi
 # Allow owlh use tcpdump with sudo without password
 echo "allow user owlh to use tcpdump and chown"
 #sudo sed -i '/^%wheel/a owlh     ALL=(ALL)       NOPASSWD: /usr/sbin/tcpdump' /etc/sudoers
-sudo echo "owlh     ALL=(ALL)       NOPASSWD: /usr/sbin/tcpdump" >> /etc/sudoers.d/owlh
+sudo echo "owlh     ALL=(ALL)       NOPASSWD: /usr/sbin/tcpdump, /usr/bin/chown" >> /etc/sudoers.d/owlh
 
 
 # Prepare owlh related stuff folder
@@ -47,6 +47,9 @@ sudo chown owlh /var/log/owlh
 sudo chgrp owlh /var/log/owlh
 sudo chown -R owlh /usr/share/owlh
 sudo chgrp -R owlh /usr/share/owlh
+
+sudo echo "not host 10.164.0.4 and not port 22" > /etc/owlh/filter.bpf
+
 
 # clean and end
 echo "should be done. Enjoy your day."
