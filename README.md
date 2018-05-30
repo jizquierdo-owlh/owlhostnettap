@@ -1,5 +1,7 @@
 # OwlH Host Network Tap
 
+# NOTE: Check OwlMaster repository for updated Software TAP solution. this one won't be updated. 
+
 if you have an AWS deployment this may be useful.
 
 Of course, we are working in provide a better approach, but this is working right now. 
