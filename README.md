@@ -1,6 +1,11 @@
 # OwlH Host Network Tap
 
 # NOTE: Check OwlMaster repository for updated Software TAP solution. this one won't be updated. 
+# DEPRECATED 
+
+Visit _https://github.com/OwlH-net
+
+
 
 if you have an AWS deployment this may be useful.
 
